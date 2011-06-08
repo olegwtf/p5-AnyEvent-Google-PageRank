@@ -18,6 +18,7 @@ This module requires these other modules and libraries:
 
   AnyEvent::HTTP
   WWW::Google::PageRank
+  URI::Escape
 
 COPYRIGHT AND LICENCE
 

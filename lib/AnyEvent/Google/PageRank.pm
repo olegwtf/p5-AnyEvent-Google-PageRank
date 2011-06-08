@@ -184,7 +184,7 @@ sub get {
 
 Get rank for specified url and call specified callback on finish. Key/value pairs
 are options understended by AnyEvent::HTTP http_request() and new() method of this
-module (except ae_http option). For $cb details see get() method.
+module (except ae_http option). For $cb description see get() method.
 
 =cut
 
