@@ -116,13 +116,13 @@ sub make_rank_server {
 				}
 			
 				my ($path) = $headers =~ /GET\s+(\S+)/
-					or next;
+					or exit;
 				
 				$path =~ /ch=([^&]+)/
-					or next;
+					or exit;
 				
 				my ($url) = $path =~ /info:(.+)/
-					or next;
+					or exit;
 				$url = uri_unescape($url);
 				
 				my $response;
