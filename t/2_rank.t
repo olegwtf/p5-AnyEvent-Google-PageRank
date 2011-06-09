@@ -11,6 +11,8 @@ if( $^O eq 'MSWin32' ) {
 	plan skip_all => 'Fork wont work on WindoWs';
 }
 
+$AnyEvent::HTTP::MAX_PER_HOST = 10;
+
 my $cv = AnyEvent->condvar;
 $cv->begin for 1..6;
 
@@ -118,7 +120,7 @@ sub make_rank_server {
 				
 				$path =~ /ch=([^&]+)/
 					or next;
-					
+				
 				my ($url) = $path =~ /info:(.+)/
 					or next;
 				$url = uri_unescape($url);

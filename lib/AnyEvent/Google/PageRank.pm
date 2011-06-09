@@ -40,7 +40,7 @@ use strict;
 	foreach my $url (@urls) {
 		$rank->get($url, sub {
 			my ($rank, $headers) = @_;
-			print "$url - ", defined($rank) ? $rank : " $headers->{Status} - $headers->{Reason}", "\n";
+			print "$url - ", defined($rank) ? $rank : "fail: $headers->{Status} - $headers->{Reason}", "\n";
 			$cv->end;
 		});
 	}
@@ -59,7 +59,7 @@ use strict;
 	foreach my $url (@urls) {
 		rank_get $url, timeout => 10, proxy => 'localhost:3128', sub {
 			my ($rank, $headers) = @_;
-			print "$url - ", defined($rank) ? $rank : " $headers->{Status} - $headers->{Reason}", "\n";
+			print "$url - ", defined($rank) ? $rank : "fail: $headers->{Status} - $headers->{Reason}", "\n";
 			$cv->end;
 		};
 	}
@@ -98,7 +98,7 @@ use constant {
 
 =head2 new(%opts)
 
-Creates new AnyEvent::Google::PageRank object. The following options available (all optional):
+Creates new AnyEvent::Google::PageRank object. The following options available (all are optional):
 
   KEY       DESCRIPTION                                DEFAULT
   ------------------------------------------------------------------
@@ -183,7 +183,7 @@ sub get {
 =head2 rank_get($url, key => val, ..., $cb->($rank, $headers))
 
 Get rank for specified url and call specified callback on finish. Key/value pairs
-are options understended by AnyEvent::HTTP http_request() and new() method of this
+are options understanded by AnyEvent::HTTP::http_request() and new() method of this
 module (except ae_http option). For $cb description see get() method.
 
 =cut
@@ -195,6 +195,13 @@ sub rank_get {
 }
 
 1;
+
+=head1 BUGS
+
+Not a bug: don't forget to set $AnyEvent::HTTP::MAX_PER_HOST to proper value.
+See L<AnyEvent::HTTP> for details.
+
+If you find any bug, please report.
 
 =head1 SEE ALSO
 
