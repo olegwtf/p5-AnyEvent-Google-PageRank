@@ -86,7 +86,7 @@ uses AnyEvent::HTTP as HTTP client.
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our @EXPORT_OK = qw(rank_get);
 
 use constant {
