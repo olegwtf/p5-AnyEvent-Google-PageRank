@@ -5,3 +5,4 @@ MANIFEST			This list of files
 README
 t/1_load.t
 t/2_rank.t
+t/3_live.t

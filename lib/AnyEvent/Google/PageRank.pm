@@ -86,7 +86,7 @@ uses AnyEvent::HTTP as HTTP client.
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 our @EXPORT_OK = qw(rank_get);
 
 use constant {
@@ -148,7 +148,7 @@ sub get {
 	return $cb->(undef, {Status => 695, Reason => 'malformed url'}) if $url !~ m[^https?://]i;
 	
 	my $ch = '6' . WWW::Google::PageRank::_compute_ch_new('info:' . $url);
-	my $query = 'http://' . ($self->{host}||DEFAULT_HOST) . '/search?client=navclient-auto&ch=' . $ch .
+	my $query = 'http://' . ($self->{host}||DEFAULT_HOST) . '/tbr?client=navclient-auto&ch=' . $ch .
 		'&ie=UTF-8&oe=UTF-8&features=Rank&q=info:' . uri_escape($url);
 	
 	my $opts = {};
