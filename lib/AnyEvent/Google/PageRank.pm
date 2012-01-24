@@ -14,8 +14,7 @@ use strict;
 {
 	# we really do not need LWP, but WWW::Google::PageRank uses it
 	# let's lie that LWP::UserAgent already loaded
-	local %INC;
-	$INC{'LWP/UserAgent.pm'} = 1;
+	local $INC{'LWP/UserAgent.pm'} = 1;
 	require WWW::Google::PageRank;
 }
 
